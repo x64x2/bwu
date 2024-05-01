@@ -1,0 +1,10 @@
+*~
+bin/*
+test/*
+testprog/assets/*
+testprog/assets.tar
+testprog/test
+testprog/game
+CMakeCache.txt
+CMakeFiles/*
+Makefile
