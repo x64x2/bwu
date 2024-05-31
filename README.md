@@ -1,41 +1,36 @@
 
+# bwu
 
-# stor
+This is a starting point for Go solutions to the
+["Build Your Own BitTorrent" Challenge](https://app.codecrafters.io/courses/bittorrent/overview).
 
-stor is a bittorrent client daemon. It's designed to handle your torrents in the background, and you interface with it via the
-`stor` command. It should be easily possible to make fancier frontends, such as a curses or web interface
+In this challenge, you’ll build a BitTorrent client that's capable of parsing a
+.torrent file and downloading a file from a peer. Along the way, we’ll learn
+about how torrent files are structured, HTTP trackers, BitTorrent’s Peer
+Protocol, pipelining and more.
 
-stor is a work in progress, and is not currently recommended for everyday use.
+# Passing the first stage
 
-## Usage
+The entry point for your BitTorrent implementation is in
+`cmd/bwu/main.go`. Study and uncomment the relevant code, and push your
+changes to pass the first stage:
 
-First, run `stor genconfig` as root. It will create a config file in
-`/etc/stor.conf` for you to edit as you please.
+```sh
+git add .
+git commit -m "pass 1st stage" # any msg
+git push origin master
+```
 
-Run this command to start the daemon:
+Time to move on to the next stage!
 
-    stor daemon
+# Stage 2 & beyond
 
-It is suggested that you run this through your init system. You can also run it
-through your xinitrc or similar:
+Note: This section is for stages 2 and beyond.
 
-    stor daemon --fork
-
-### Add torrents
-
-    $ stor add example.torrent
-    Added 4139bde549fb8a6c41122088e731009ca5eca883
-
-This gives you back an info hash. These are used as what is effectively your
-torrent's ID. You can use it again later to query your torrent for status or
-modify information about it.
-
-### Status Information
-
-Running `stor` will tell you the current status of the daemon. If you navigate
-to a directory a torrent is downloading in, and run `stor` again, you'll receive
-information about that torrent in particular. You can get the status of a
-particular torrent without changing your working directory, too - just run `stor
-[info hash]` or `stor [download path]`.
+1. Ensure you have `go (1.19)` installed locally
+1. Run `./bwu.sh` to run your program, which is implemented in
+   `cmd/bwu/main.go`.
+1. Commit your changes and run `git push origin master` to submit your solution
+   to CodeCrafters. Test output will be streamed to your terminal.
 
 
