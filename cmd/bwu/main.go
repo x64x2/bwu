@@ -11,83 +11,14 @@ import (
 	"strconv"
 	"strings"
 	"unicode"
-
-	"github.com/jackpal/bencode-go"
 )
 
 type TorrentFile struct {
 	TrackerURL  string
 	Length      int
-	InfoHash    [20]byte
+	InfoHash    string
 	PieceLength int
-	PieceHashes [][20]byte
-	Length      int
-    Name        string
-}
-
-// Peer encodes connection information for a peer
-type Peer struct {
-    IP   net.IP
-    Port uint16
-}
-
-// Unmarshal parses peer IP addresses and ports from a buffer
-func Unmarshal(peersBin []byte) ([]Peer, error) {
-    const peerSize = 6 // 4 for IP, 2 for port
-    numPeers := len(peersBin) / peerSize
-    if len(peersBin)%peerSize != 0 {
-        err := fmt.Errorf("Received malformed peers")
-        return nil, err
-    }
-    peers := make([]Peer, numPeers)
-    for i := 0; i < numPeers; i++ {
-        offset := i * peerSize
-        peers[i].IP = net.IP(peersBin[offset : offset+4])
-        peers[i].Port = binary.BigEndian.Uint16(peersBin[offset+4 : offset+6])
-    }
-    return peers, nil
-	conn, err := net.DialTimeout("tcp", peer.String(), 3*time.Second)
-    if err != nil {
-		return nil, err
-}
-
-workQueue := make(chan *pieceWork, len(t.PieceHashes))
-results := make(chan *pieceResult)
-for index, hash := range t.PieceHashes {
-    length := t.calculatePieceSize(index)
-    workQueue <- &pieceWork{index, hash, length}
-}
-
-// Start workers
-for _, peer := range t.Peers {
-    go t.startDownloadWorker(peer, workQueue, results)
-}
-
-// Collect results into a buffer until full
-buf := make([]byte, t.Length)
-donePieces := 0
-for donePieces < len(t.PieceHashes) {
-    res := <-results
-    begin, end := t.calculateBoundsForPiece(res.index)
-    copy(buf[begin:end], res.buf)
-    donePieces++
-}
-
-// A Bitfield represents the pieces that a peer has
-type Bitfield string
-
-// HasPiece tells if a bitfield has a particular index set
-func (bf Bitfield) HasPiece(index int) bool {
-    byteIndex := index / 8
-    offset := index % 8
-    return bf[byteIndex]>>(7-offset)&1 != 0
-}
-
-// SetPiece sets a bit in the bitfield
-func (bf Bitfield) SetPiece(index int) {
-    byteIndex := index / 8
-    offset := index % 8
-    bf[byteIndex] |= 1 << (7 - offset)
+	PieceHashes []string
 }
 
 func decodePiecesHash(str string) []string {
