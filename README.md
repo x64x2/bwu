@@ -17,6 +17,3 @@ I've shared them publicly in my Dropbox: http://bit.ly/1myJJk0
 Copy everything from there to the /resources directory.
 
 
--------
-I haven't formally decided on a license for this project yet.
-
