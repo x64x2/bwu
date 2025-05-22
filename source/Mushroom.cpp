@@ -1,0 +1,47 @@
+/*
+ * Mushroom.cpp
+ * 
+ * Copyright 2025 x64x2 <x64x2@mango>
+ * 
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ * MA 02110-1301, USA.
+ * 
+ * 
+ */
+
+
+#include "Mushroom.hpp"
+
+Mushroom::Mushroom( MushroomType type ) :
+	Item( type == MUSHROOM_SUPER ? POWERUP_POINT_VALUE : 0 ), // Only super mushrooms give the player points
+	type(type)
+{
+	switch( type )
+	{
+		case MUSHROOM_1UP:
+			setAnimation("mushroom_1up");
+			break;
+		case MUSHROOM_SUPER:
+		default:
+			setAnimation("mushroom");
+			break;
+	}
+	setXVelocity(MOVEMENT_SPEED);
+}
+
+MushroomType Mushroom::getType() const
+{
+	return type;
+}
