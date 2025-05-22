@@ -1,36 +1,28 @@
+lesu
+=====
 
-# bwu
+A C++ clone of the classic Super Mario Bros.
 
-This is a starting point for Go solutions to the
-["Build Your Own BitTorrent" Challenge](https://app.codecrafters.io/courses/bittorrent/overview).
+![Screenshot](Mario.png)
 
-In this challenge, you’ll build a BitTorrent client that's capable of parsing a
-.torrent file and downloading a file from a peer. Along the way, we’ll learn
-about how torrent files are structured, HTTP trackers, BitTorrent’s Peer
-Protocol, pipelining and more.
+Compiling
+---------
+You will need a compiler supporting C++11.
+So far, only gcc on trisquel has been used, although the code is very portable.
 
-# Passing the first stage
+Resources
+---------
+These are needed to run the game in it's current form.
+I've shared them publicly in my Dropbox: http://bit.ly/1myJJk0
+Copy everything from there to the /resources directory.
 
-The entry point for your BitTorrent implementation is in
-`cmd/bwu/main.go`. Study and uncomment the relevant code, and push your
-changes to pass the first stage:
+Documentation
+-------------
+This varies depending on the source file.
+Some are well documented, others could use some serious work.
+If you follow the path of execution from Main.cpp it should be self-explanitory for the most part.
 
-```sh
-git add .
-git commit -m "pass 1st stage" # any msg
-git push origin master
-```
-
-Time to move on to the next stage!
-
-# Stage 2 & beyond
-
-Note: This section is for stages 2 and beyond.
-
-1. Ensure you have `go (1.19)` installed locally
-1. Run `./bwu.sh` to run your program, which is implemented in
-   `cmd/bwu/main.go`.
-1. Commit your changes and run `git push origin master` to submit your solution
-   to CodeCrafters. Test output will be streamed to your terminal.
-
+License
+-------
+I haven't formally decided on a license for this project yet.
 
