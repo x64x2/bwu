@@ -12,8 +12,4 @@ So far, only gcc on trisquel has been used, although the code is very portable.
 
 Resources
 ---------
-These are needed to run the game in it's current form.
-I've shared them publicly in my Dropbox: http://bit.ly/1myJJk0
-Copy everything from there to the /resources directory.
-
-
+Todo
